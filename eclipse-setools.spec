@@ -6,7 +6,7 @@ Exclusiveos:linux
 %define require_setools_fix_ver		.2
 #BuildRequires: perl(XML::XPath)
 BuildRequires: eclipse-pde
-BuildRequires: ant >= 1.6
+BuildRequires: ant >= 0:1.6
 BuildRequires: java-rpmbuild >= 0:1.5
 %if %{gcj_support}
 BuildRequires: java-gcj-compat-devel
@@ -84,7 +84,6 @@ PLUGIN_DIR=%{eclipse_base}/plugins/com.tresys.setools_${PLUGIN_VER}
 FRAGMENT_DIR=%{eclipse_lib_base}/plugins/com.tresys.setools.%{_os}.%{arch}_${FRAGMENT_VER}
 FRAGMENT_SRC=eclipse-setools/setools.%{_os}.%{arch}
 
-rm -rf ${RPM_BUILD_ROOT}
 install -dp -m755 ${RPM_BUILD_ROOT}${PLUGIN_DIR}
 install -dp -m755 ${RPM_BUILD_ROOT}${FEATURE_DIR}
 install -dp -m755 ${RPM_BUILD_ROOT}${FRAGMENT_DIR}
@@ -140,4 +139,3 @@ fi
 %dir %{_libdir}/gcj/%{name}
 %attr(-,root,root) %{_libdir}/gcj/%{name}/*
 %endif
-
