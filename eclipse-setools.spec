@@ -67,6 +67,8 @@ The package inclues java runtime libraries for the following:
 %setup -q -c -n eclipse-setools
 
 %build
+export CLASSPATH=
+export OPT_JAR_LIST=:
 #cd ${RPM_BUILD_DIR}%{plugin_dir}
 cd setools-plugin
 %{ant} -f rpmbuild.xml build
