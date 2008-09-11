@@ -1,5 +1,3 @@
-%define gcj_support 1
-
 Exclusiveos:linux
 
 %define require_setools_major_ver	3.3
@@ -8,9 +6,6 @@ Exclusiveos:linux
 BuildRequires: eclipse-pde
 BuildRequires: ant >= 0:1.6
 BuildRequires: java-rpmbuild >= 0:1.5
-%if %{gcj_support}
-BuildRequires: java-gcj-compat-devel
-%endif
 BuildRequires: setools-libs-java >= %{require_setools_major_ver}%{require_setools_fix_ver}
 
 %define eclipse_name		eclipse
@@ -23,7 +18,7 @@ Name: eclipse-setools
 Group: Development/Java
 License: LGPLv2+
 URL: http://oss.tresys.com/projects/setools
-Version: 3.3.2.3
+Version: 3.3.2.4
 
 # mkdir eclipse-setools
 # cd eclipse-setools
@@ -111,31 +106,11 @@ ln -s ../../../../libjseaudit.so.4 ${RPM_BUILD_ROOT}${FRAGMENT_DIR}/lib/libjseau
 
 install -p -m644 ${RPM_BUILD_DIR}/eclipse-setools/setools-feature/feature.xml ${RPM_BUILD_ROOT}${FEATURE_DIR}
 
-%if %{gcj_support}
-%{_bindir}/aot-compile-rpm
-%endif
-
 %clean
 rm -rf ${RPM_BUILD_ROOT}
-
-%post
-if [ -x %{_bindir}/rebuild-gcj-db ] 
-then
-	%{_bindir}/rebuild-gcj-db
-fi
-
-%postun
-if [ -x %{_bindir}/rebuild-gcj-db ] 
-then
-	%{_bindir}/rebuild-gcj-db 
-fi
 
 %files
 %defattr(-,root,root,0755)
 %{eclipse_base}/plugins/com.tresys.setools*/
 %{eclipse_base}/features/com.tresys.setools*/
 %{eclipse_lib_base}/plugins/com.tresys.setools*/
-%if %{gcj_support}
-%dir %{_libdir}/gcj/%{name}
-%attr(-,root,root) %{_libdir}/gcj/%{name}/*
-%endif
