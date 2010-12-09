@@ -33,7 +33,7 @@ Version: 3.3.2.4
 #Release: 0.2.svn1998%{?dist}
 
 Source0: http://oss.tresys.com/projects/slide/chrome/site/src/%{name}-%{version}.tar.gz
-Release: %mkrel 0.1.2
+Release: %mkrel 0.1.3
 %ifarch %{ix86}
 %define arch	x86
 %else
