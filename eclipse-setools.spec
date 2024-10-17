@@ -17,7 +17,7 @@ Summary: Eclipse plugin wrapper for SETools Java policy analysis tools for SELin
 Name: eclipse-setools
 Group: Development/Java
 License: LGPLv2+
-URL: http://oss.tresys.com/projects/setools
+URL: https://oss.tresys.com/projects/setools
 Version: 3.3.2.4
 
 # mkdir eclipse-setools
